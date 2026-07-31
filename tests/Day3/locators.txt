@@ -1,0 +1,19 @@
+Stage 3 was all about locators.
+
+Playwright locator notes:
+- page.locator('css selector') -> best for most UI elements
+- page.getByRole('button', { name: 'Submit' }) -> stable and semantic, preferred when possible
+- page.getByLabel('Email') -> finds form controls by accessible label
+- page.getByPlaceholder('Enter name') -> useful for inputs with placeholders
+- page.getByText('Welcome') -> useful for matching visible text
+- page.getByTestId('user-card') -> good when test IDs are intentionally added for automation
+- locator.first(), .nth(index), .last() -> for selecting among multiple matching elements
+- locator.locator('span') -> scoped locator inside another locator
+- locator.filter({ hasText: 'Delete' }) -> narrow matching elements
+- locator.waitFor() -> wait for element to appear/visible before actions
+- Expect best practices: use role/label/text locators before CSS/XPath for readability and stability
+- CSS examples: input[type='email'], button.primary, .nav-item
+- XPath examples: //input[@type='email'], //button[text()='Submit'], //div[contains(@class,'card')]
+- Avoid brittle locators: overly long CSS chains, index-only selectors, fragile XPath with too much DOM structure
+- Use .click(), .fill(), .check(), .press() with locators for user-like interactions
+- Always prefer locators that describe the user-visible behavior of the page.
